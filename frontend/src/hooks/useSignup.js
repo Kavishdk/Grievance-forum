@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
+import config from '../config';
 
 export const useSignup = () => {
     const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ export const useSignup = () => {
 
         try {
             // Replace the API endpoint with your actual signup endpoint
-            const response = await fetch('/api/user/signup', {
+            const response = await fetch(`${config.API_URL}/api/user/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, role })

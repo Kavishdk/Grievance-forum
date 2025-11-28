@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext'; // Update the context import to your GrievancesContext
+import config from '../config';
 
 export const useLogin = () => {
     const [error, setError] = useState(null);
@@ -11,7 +12,7 @@ export const useLogin = () => {
         setError(null);
 
         // Replace the API endpoint with your actual login endpoint
-        const response = await fetch('/api/user/login', {
+        const response = await fetch(`${config.API_URL}/api/user/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

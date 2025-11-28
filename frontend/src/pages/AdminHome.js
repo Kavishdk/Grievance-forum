@@ -3,6 +3,7 @@ import { useGrievancesContext } from "../hooks/useGrievancesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import AdminGrievanceDetails from "../components/AdminGrievanceDetails";
 import { Puff } from "react-loading-icons"; // Import the Puff loader
+import config from "../config";
 
 const AdminHome = () => {
   const { grievances, dispatch } = useGrievancesContext();
@@ -13,7 +14,7 @@ const AdminHome = () => {
   useEffect(() => {
     const fetchGrievances = async () => {
       try {
-        const response = await fetch('/api/grievances', {
+        const response = await fetch(`${config.API_URL}/api/grievances`, {
           headers: {
             'Authorization': `Bearer ${user.token}`,
           }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGrievancesContext } from "../hooks/useGrievancesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import config from "../config";
 
 const GrievanceForm = () => {
     const { dispatch } = useGrievancesContext();
@@ -35,7 +36,7 @@ const GrievanceForm = () => {
             formData.append('image', image);
         }
 
-        const response = await fetch('/api/grievances/', {
+        const response = await fetch(`${config.API_URL}/api/grievances/`, {
             method: 'POST',
             body: formData,
             headers: {

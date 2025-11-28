@@ -1,5 +1,6 @@
 import { useGrievancesContext } from "../hooks/useGrievancesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import config from "../config";
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
@@ -13,7 +14,7 @@ const UserGrievanceDetails = ({ grievance }) => {
             return;
         }
 
-        const response = await fetch('/api/grievances/' + grievance._id, {
+        const response = await fetch(`${config.API_URL}/api/grievances/` + grievance._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -41,7 +42,7 @@ const UserGrievanceDetails = ({ grievance }) => {
                 <div className="grievance-image" style={{ margin: '10px 0' }}>
                     <p><strong>Attachment:</strong></p>
                     <img
-                        src={`/${grievance.imageUrl.replace(/\\/g, '/')}`}
+                        src={`${config.API_URL}/${grievance.imageUrl.replace(/\\/g, '/')}`}
                         alt="Grievance Attachment"
                         style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', border: '1px solid #e2e8f0' }}
                     />

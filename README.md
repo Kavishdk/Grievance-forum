@@ -1,105 +1,130 @@
-# Grievance Forum for College Community
+# 🏛️ Grievance Portal
 
-The Grievance Forum is a web-based application designed for a college community, allowing staff to post anonymous queries and administrators to resolve them. The system ensures privacy as users can only view their queries and not those of others, while administrators have access to all queries. This project is built using MongoDB, Express, Node.js, React, and JWT for authentication.
+![MERN Stack](https://img.shields.io/badge/MERN-Stack-green)
+![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
-## Live Demo
+A robust, full-stack web application designed to streamline the grievance redressal process for educational institutions. This portal enables staff and students to anonymously lodge complaints while providing administrators with a powerful dashboard to manage and resolve them efficiently.
 
-Visit the live demo at: [Grievance Portal](https://grievance-portal-frontend-v1.onrender.com/)
+---
 
-## Features
+## 🚀 Live Demo
 
-- **Anonymous Query Posting**: Staff can anonymously post their grievances.
-- **Query Resolution**: Admins can view and address all posted queries.
-- **Role-Based Access Control**: Different interfaces and permissions for users and admins.
-- **Secure Login and Signup**: Integrated user authentication.
+**[View Live Application](https://grievance-portal-frontend-v1.onrender.com/)** *(Replace with your actual deployed URL)*
 
-## Screenshots
+---
 
-**Login Page**:
-![Login Page](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/ae6817a3-e5fe-446e-9f08-0c30daa7f6fd)
+## ✨ Key Features
 
-**Signup Page**:
-![Signup Page](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/7a23ac1f-28b9-4246-ac04-eeb03338695a)
+### 👤 For Users (Staff/Students)
+*   **Anonymous Reporting**: Lodge grievances without fear of identity disclosure.
+*   **Real-time Tracking**: Monitor the status of submitted grievances (Pending, In Progress, Resolved).
+*   **Secure Authentication**: JWT-based login and signup for account security.
+*   **Image Attachments**: Support for uploading evidence/images with complaints.
+*   **Categorized Filing**: Organize complaints by department, category, and priority.
 
-**Admin Dashboard**:
-![Admin Dashboard](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/2545f29a-a6e4-499a-8e49-caf8d40e5357)
+### 🛡️ For Administrators
+*   **Centralized Dashboard**: View all grievances in one place.
+*   **Status Management**: Update grievance status and provide official responses.
+*   **Filtering & Sorting**: Easily filter complaints by category or department.
+*   **Role-Based Access**: Secure admin-only routes and functionalities.
 
-**User Page**:
-![User Page](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/13eda780-da05-4a9c-8b4b-0c48a6ba31c0)
+---
 
-## Prerequisites
+## 🛠️ Tech Stack
 
-Before you begin, ensure you have met the following requirements:
-- Node.js installed on your machine
-- A MongoDB database setup
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) | Dynamic user interface with React Hooks and Context API. |
+| **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-404D59?style=flat) | RESTful API architecture. |
+| **Database** | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white) | NoSQL database for flexible data storage. |
+| **Authentication** | ![JWT](https://img.shields.io/badge/JWT-black?style=flat&logo=JSON%20web%20tokens) | JSON Web Tokens for stateless authentication. |
+| **Deployment** | ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat&logo=render&logoColor=white) ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white) | Cloud hosting for Backend and Frontend. |
 
-## Installation
+---
 
-Clone the project repository from GitHub:
+## 📸 Screenshots
 
+| Login Page | Signup Page |
+|:---:|:---:|
+| ![Login](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/ae6817a3-e5fe-446e-9f08-0c30daa7f6fd) | ![Signup](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/7a23ac1f-28b9-4246-ac04-eeb03338695a) |
+
+| User Dashboard | Admin Dashboard |
+|:---:|:---:|
+| ![User](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/13eda780-da05-4a9c-8b4b-0c48a6ba31c0) | ![Admin](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/2545f29a-a6e4-499a-8e49-caf8d40e5357) |
+
+---
+
+## ⚙️ Installation & Setup (Local)
+
+Follow these steps to run the project locally on your machine.
+
+### Prerequisites
+*   Node.js (v14+)
+*   MongoDB (Local or Atlas URI)
+
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/Hariharanm95/Grievance-Forum.git
-cd Grievance-Forum
+git clone https://github.com/Kavishdk/Grievance-forum.git
+cd Grievance-forum
 ```
 
-### Setup Backend
-
-Navigate to the backend directory:
-
+### 2. Backend Setup
 ```bash
 cd backend
-```
-
-Install the necessary dependencies:
-
-```bash
 npm install
 ```
-
-Create a `.env` file in the backend directory and populate it with your settings:
-
-```plaintext
+Create a `.env` file in the `backend` folder:
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
-SECRET=your_jwt_secret
+SECRET=your_jwt_secret_key
 ```
-
-Run the backend server:
-
+Start the server:
 ```bash
 npm run dev
 ```
 
-### Setup Frontend
-
-Open a new terminal and navigate to the frontend directory from the project root:
-
+### 3. Frontend Setup
+Open a new terminal:
 ```bash
 cd frontend
-```
-
-Install the required dependencies:
-
-```bash
 npm install
-```
-
-Start the React application:
-
-```bash
 npm start
 ```
+The app will launch at `http://localhost:3000`.
 
-The application should now be running and accessible at `http://localhost:3000`.
+---
 
-## Usage
+## 🌍 Deployment
 
-Log in to the system using the credentials provided during the signup process. Depending on your role (user or admin), you will be directed to the appropriate interface where you can post grievances or manage them.
+This project is configured for easy deployment.
+*   **Backend**: Render / Railway / Heroku
+*   **Frontend**: Vercel / Netlify
 
-## Contributing
+👉 **[Read the Full Deployment Guide](DEPLOYMENT.md)**
 
-Contributions to the Grievance Forum are welcome. Please ensure to update tests as appropriate.
+---
 
-## License
+## 🤝 Contributing
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Contributions are welcome!
+1.  Fork the project
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 📞 Contact
+
+**Kavishdk** - [GitHub Profile](https://github.com/Kavishdk)
+
+Project Link: [https://github.com/Kavishdk/Grievance-forum](https://github.com/Kavishdk/Grievance-forum)

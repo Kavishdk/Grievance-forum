@@ -4,6 +4,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 //Like importing Express
 const express = require('express')
+const cors = require('cors');
 
 //import Mongoose
 const Mongoose = require('mongoose')
@@ -17,11 +18,17 @@ const app = express()
 
 //middleware
 //The middleware in node. js is a function that will have all the access for requesting an object, responding to an object, and moving to the next middleware function in the application request-response cycle.
+app.use(cors());
 app.use(express.json())
 app.use((req, res, next) => {
     console.log(req.path, req.method)
     next()
 })
+
+// Health check route
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
 
 //routes
 app.use('/api/grievances', grievanceRoutes)

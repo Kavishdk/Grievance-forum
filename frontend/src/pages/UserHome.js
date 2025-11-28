@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useGrievancesContext } from "../hooks/useGrievancesContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Puff } from "react-loading-icons"; // Import the Puff loader
+import config from "../config";
 
 // Import components
 import UserGrievanceDetails from "../components/UserGrievanceDetails";
@@ -15,7 +16,7 @@ const UserHome = () => {
   useEffect(() => {
     const fetchGrievances = async () => {
       try {
-        const response = await fetch('/api/grievances', {
+        const response = await fetch(`${config.API_URL}/api/grievances`, {
           headers: {
             'Authorization': `Bearer ${user.token}`,
           }
