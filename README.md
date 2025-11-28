@@ -43,17 +43,7 @@ A robust, full-stack web application designed to streamline the grievance redres
 
 ---
 
-## 📸 Screenshots
 
-| Login Page | Signup Page |
-|:---:|:---:|
-| ![Login](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/ae6817a3-e5fe-446e-9f08-0c30daa7f6fd) | ![Signup](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/7a23ac1f-28b9-4246-ac04-eeb03338695a) |
-
-| User Dashboard | Admin Dashboard |
-|:---:|:---:|
-| ![User](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/13eda780-da05-4a9c-8b4b-0c48a6ba31c0) | ![Admin](https://github.com/Hariharanm95/Grievance-Forum/assets/100566501/2545f29a-a6e4-499a-8e49-caf8d40e5357) |
-
----
 
 ## ⚙️ Installation & Setup (Local)
 
