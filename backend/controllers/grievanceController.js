@@ -1,5 +1,7 @@
 // Import grievance model
 const Grievance = require('../models/grievanceModel');
+const User = require('../models/userModel');
+const sendEmail = require('../utils/emailService');
 
 const mongoose = require('mongoose');
 
@@ -7,9 +9,9 @@ const mongoose = require('mongoose');
 const getGrievances = async (req, res) => {
     try {
         let query = {};
-        
+
         // Check if the user is an admin
-        if (req.user && req.headers['x-user-role'] === 'admin') {
+        if (req.user && req.user.role === 'admin') {
             // If the user is an admin, fetch all grievances
             query = {};
         } else if (req.user) {
@@ -52,7 +54,12 @@ const getGrievance = async (req, res) => {
 
 // POST (create) a new Grievance
 const createGrievance = async (req, res) => {
-    const { title, description, userType, department, category, status, reply } = req.body;
+    const { title, description, userType, department, category, status, reply, priority } = req.body;
+
+    let imageUrl = '';
+    if (req.file) {
+        imageUrl = req.file.path;
+    }
 
     // Validate required fields
     const requiredFields = ['title', 'description', 'userType', 'department', 'category'];
@@ -73,7 +80,15 @@ const createGrievance = async (req, res) => {
             user_id,
             status, // Add the status property to the new grievance
             reply, // Add the reply property to the new grievance
+            priority: priority || 'Low',
+            imageUrl
         });
+
+        // Notify Admin
+        if (process.env.ADMIN_EMAIL) {
+            await sendEmail(process.env.ADMIN_EMAIL, 'New Grievance Submitted', `A new grievance titled "${title}" has been submitted by ${req.user.email}.`);
+        }
+
         res.status(200).json(grievance);
     } catch (error) {
         res.status(400).json({ error: error.message });
@@ -133,6 +148,12 @@ const updateGrievanceStatusAndReply = async (req, res) => {
 
         if (!grievance) {
             return res.status(404).json({ error: "No such Grievance" });
+        }
+
+        // Notify User
+        const user = await User.findById(grievance.user_id);
+        if (user) {
+            await sendEmail(user.email, 'Grievance Update', `Your grievance "${grievance.title}" has been updated.\nStatus: ${status}\nReply: ${reply}`);
         }
 
         res.status(200).json(grievance);

@@ -18,7 +18,6 @@ const UserHome = () => {
         const response = await fetch('/api/grievances', {
           headers: {
             'Authorization': `Bearer ${user.token}`,
-            'X-User-Role': user.role,
           }
         });
         const json = await response.json();
@@ -53,7 +52,7 @@ const UserHome = () => {
 
         <h3>Your Grievances</h3>
         <hr />
-        
+
         {!isLoading && grievances && grievances.map((grievance) => (
           <UserGrievanceDetails key={grievance._id} grievance={grievance} />
         ))}
@@ -62,4 +61,4 @@ const UserHome = () => {
   );
 };
 
-export default UserHome;    
+export default UserHome;

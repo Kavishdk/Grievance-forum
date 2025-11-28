@@ -1,5 +1,6 @@
 //Like Importing from .env
-require('dotenv').config()
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 //Like importing Express
 const express = require('express')
@@ -25,11 +26,12 @@ app.use((req, res, next) => {
 //routes
 app.use('/api/grievances', grievanceRoutes)
 app.use('/api/user', userRoutes)
+app.use('/uploads', express.static('uploads'));
 
 //Connect to DB
-Mongoose.connect(process.env.MONG_URI)
+Mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        app.listen(process.env.PORT, ()=>{
+        app.listen(process.env.PORT, () => {
             console.log("Connected to DB & Listening to port")
         })
     })

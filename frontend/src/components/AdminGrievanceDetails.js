@@ -88,7 +88,7 @@ const AdminGrievanceDetails = ({ grievance }) => {
             console.error('Network error or unexpected error:', error);
         }
     };
-    
+
 
     return (
         <div className="grievance-details">
@@ -97,10 +97,21 @@ const AdminGrievanceDetails = ({ grievance }) => {
             <p><strong>User Type:</strong> {grievance.userType}</p>
             <p><strong>Department:</strong> {grievance.department}</p>
             <p><strong>Category:</strong> {grievance.category}</p>
+            <p><strong>Priority:</strong> <span className={`priority-badge ${grievance.priority?.toLowerCase()}`}>{grievance.priority}</span></p>
+            {grievance.imageUrl && (
+                <div className="grievance-image" style={{ margin: '10px 0' }}>
+                    <p><strong>Attachment:</strong></p>
+                    <img
+                        src={`/${grievance.imageUrl.replace(/\\/g, '/')}`}
+                        alt="Grievance Attachment"
+                        style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', border: '1px solid #e2e8f0' }}
+                    />
+                </div>
+            )}
             <p><strong>Reply:</strong> {grievance.reply}</p>
-            <p><strong>Status:</strong> {grievance.status}</p>
+            <p><strong>Status:</strong> <span className={`status-badge ${grievance.status}`}>{grievance.status}</span></p>
             <div className="time">
-            <p className="posted-time">{formatDistanceToNow(new Date(grievance.createdAt), { addSuffix: true })}</p>
+                <p className="posted-time">{formatDistanceToNow(new Date(grievance.createdAt), { addSuffix: true })}</p>
             </div>
             {user && (
                 <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
@@ -129,15 +140,15 @@ const AdminGrievanceDetails = ({ grievance }) => {
                         <option value="rejected">Rejected</option>
                     </select>
                     <div className="button-container">
-                    <button onClick={closeReplyPopup}>Close</button>
-                    <button onClick={handleSubmit}>Submit</button>
+                        <button onClick={closeReplyPopup}>Close</button>
+                        <button onClick={handleSubmit}>Submit</button>
                     </div>
                     {isSubmitSuccess && (
-                    <p className="success-message">Successfully submitted</p>
+                        <p className="success-message">Successfully submitted</p>
                     )}
                 </div>
             )}
-            
+
         </div>
     );
 }

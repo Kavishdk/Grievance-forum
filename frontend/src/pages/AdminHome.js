@@ -16,7 +16,6 @@ const AdminHome = () => {
         const response = await fetch('/api/grievances', {
           headers: {
             'Authorization': `Bearer ${user.token}`,
-            'X-User-Role': user.role,
           }
         });
         const json = await response.json();
@@ -40,8 +39,8 @@ const AdminHome = () => {
   // Check if grievances is null or undefined
   if (isLoading) {
     return <div className="loader-overlay">
-    <Puff width={200} height={200} /> {/* Adjust size and color */}
-  </div>
+      <Puff width={200} height={200} /> {/* Adjust size and color */}
+    </div>
   }
 
   // Check if grievances is null or undefined
@@ -70,7 +69,7 @@ const AdminHome = () => {
           </button>
         ))}
       </div>
-    
+
       <div className="grievances">
         <h3>Grievances</h3>
         <hr />

@@ -1,427 +1,802 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* layout */
 :root {
-  --primary: #2b2d42;
-  --error: #e7195a;
+  /* Modern Color Palette */
+  --primary: #6366f1;
+  /* Indigo 500 */
+  --primary-dark: #4f46e5;
+  /* Indigo 600 */
+  --primary-light: #818cf8;
+  /* Indigo 400 */
+  --secondary: #10b981;
+  /* Emerald 500 */
+  --accent: #f43f5e;
+  /* Rose 500 */
+  --error: #ef4444;
+
+  --background: #f8fafc;
+  /* Slate 50 */
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  /* Slate 100 */
+
+  --text-main: #1e293b;
+  /* Slate 800 */
+  --text-secondary: #64748b;
+  /* Slate 500 */
+  --text-light: #94a3b8;
+  /* Slate 400 */
+
+  --border: #e2e8f0;
+  /* Slate 200 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 body {
-  background: #f1f1f1;
+  background-color: var(--background);
   margin: 0;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
-header {
-  /* background: var(--primary); */
-  background: var(--primary);
-  padding: 10px 0;
-}
-header .container {
-  max-width: 100%;
+
+/* Layout */
+.pages {
+  max-width: 1200px;
+  padding: 40px 24px;
   margin: 0 auto;
-  padding: 0 20px;
+  min-height: calc(100vh - 80px);
+}
+
+/* Header */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
   align-items: center;
   justify-content: space-between;
-}
-header a {
-  color: white;
-  text-decoration: none;
-}
-.pages{
-  max-width: 1400px;
-  padding: 20px;
-  margin: 0 auto;
+  height: 50px;
 }
 
-/* homepage */
-.user-home {
-  display: grid;
-  grid-template-columns: 1.4fr 2.6fr;
-  gap: 100px;
-}
-.profile-card {
-  border-radius: 10px;
-  overflow: hidden;
-}
-.grievance-details {
-  background: var(--primary);
-  border-radius: 20px;
-  color: #fff;
-  margin: 20px;
-  position: relative;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-}
-.grievance-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.1em;
-  color: #ffffff;
-}
-.grievance-details p {
-  margin: 0 0 15px 0;
-  font-size: 1em;
-  color: #ffffff;
-}
-.grievance-details span {
-  position: absolute;
-  display: block; /* Make the span a block element */
-  top: 10px;
-  right: 20px;
-  cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
-  border-radius: 50%;
-  color: var(--primary);
-}
-.grievance-details > .time {
-  border-radius: 5px;
-  background-color: #edf2f4;
-  padding: 1px;
-  width: 150px;
-  text-align: center;
+header a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.grievance-details > .time > .posted-time {
-  color: rgb(0, 0, 0);
-}
-
-
-
-/* new workout form */
-
-
-label, input {
-  display: block;
-}
-input {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-form button {
-  background: #edf2f4;
-  border: 0;
-  color: rgb(0, 0, 0);
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-div.error {
-  padding: 10px;
-  background: #ffefef;
-  border: 1px solid var(--error);
-  color: var(--error);
-  border-radius: 4px;
-  margin: 20px 0;
-}
-input.error {
-  border: 1px solid var(--error);
-}
-
-/* Add media queries for larger screens */
-@media (min-width: 768px) {
-  .grievance-details {
-    padding: 50px; /* Restore padding for larger screens */
-  }
-
-  .grievance-details h4 {
-    font-size: 1.2em; /* Restore font size for larger screens */
-  }
-
-  /* Adjust other styles as needed for larger screens */
-}
-
-/* navbar */
+/* Navigation */
 nav {
   display: flex;
   align-items: center;
+  gap: 16px;
 }
-nav a {
-  margin-left: 10px;
+
+nav div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: var(--primary);
+  transition: var(--transition);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+
+.nav-link:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+.nav-link.cta {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+}
+
+.nav-link.cta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
 nav button {
-  background: #edf2f4;
-  color: #000000;
-  border: 2px solid #edf2f4;
-  padding: 6px 10px;
-  border-radius: 4px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 9999px;
   cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav button:hover {
+  background: var(--surface-hover);
+  color: var(--error);
+  border-color: var(--error);
 }
 
 nav span {
-  color: white;
-  cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-
-/* auth forms */
-form.signup, form.login {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 4px;
-}
-form > textarea{
-  padding: 50px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-form > select {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-.login > button {
-  background-color: var(--primary);
-  color: #fff;
-}
-
-
-form.signup select,
-form.signup input {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-/* Style for the role select specifically */
-form.signup select {
-  appearance: none;
-  /* -webkit-appearance: none; */
-  /* -moz-appearance: none; */
-  padding-right: 30px; /* Adjust the padding to make room for the arrow */
-}
-
-.signup > button {
-  background-color: var(--primary);
-  color: #fff;
-}
-
-
-.grievanceForm{
-  background: var(--primary);
-  padding: 20px;
-  border-radius: 10px;
-  color: white;
-  position: sticky;
-  top: 20px; /* Adjust as needed for the desired fixed position */
-  height: calc(100vh - 200px); /* Calculate the height to fill the viewport minus padding */
-  overflow-y: auto;  /*Add vertical scroll for content exceeding the height */
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-
-}
-
-/* Adjust the scrollbar width and add gap */
-.grievances::-webkit-scrollbar {
-  width: 4px; /* Adjust the scrollbar width as needed */
-  background-color: transparent; /* Set the background color of the scrollbar track */
-}
-
-/* Style the scrollbar thumb */
-.grievances::-webkit-scrollbar-thumb {
-  background-color: #888; /* Set the color of the scrollbar thumb */
-  border-radius: 3px; /* Make the scrollbar thumb rounded */
-}
-
-.grievances {
-  max-height: calc(100vh - 150px); /* Calculate the maximum height for the grievances section */
-  overflow-y: auto; /* Add vertical scroll for content exceeding the height */
-  padding-right: 10px;
-}
-
-
-
-.category-buttons {
-  gap: 15px;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 500;
   display: flex;
-  height: 50px;
-  overflow-x: auto; /* Changed from "scroll" to "auto" */
-  white-space: nowrap;
+  align-items: center;
+}
+
+/* Auth Forms */
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 48px;
+  background: var(--surface);
+  border-radius: 24px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border: 1px solid var(--border);
   position: relative;
+  overflow: hidden;
 }
 
-.category-buttons > button {
-  border-radius: 5px;
-  background: var(--primary);
-  color: rgb(255, 255, 255);
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 10px;
-  width: 150px;
-  cursor: pointer;
+/* Decorative top border for forms */
+form.signup::before,
+form.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+form h3 {
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-main);
+  background-color: var(--background);
+  transition: var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Submit Button Styling */
+form button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 16px;
   border: none;
-  transition: box-shadow 0.3s;
-  /* Removed the duplicate "width" property */
+  border-radius: var(--radius);
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 16px;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
 }
 
-.category-buttons::-webkit-scrollbar { /* Changed "categories" to "category-buttons" */
-  height: 3px;
-  background-color: transparent;
+form button:hover {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+  transform: translateY(-2px);
 }
 
-.category-buttons::-webkit-scrollbar-thumb { /* Changed "categories" to "category-buttons" */
-  background-color: #ccc;
-  border-radius: 5px;
+form button:active {
+  transform: translateY(0);
 }
 
-.category-buttons::-webkit-scrollbar-track { /* Changed "categories" to "category-buttons" */
-  background-color: transparent;
+div.error {
+  padding: 16px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #ef4444;
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.category-buttons > button:focus {
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+/* User Home Grid */
+.user-home {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
+@media (max-width: 900px) {
+  .user-home {
+    grid-template-columns: 1fr;
+  }
+
+  .grievanceForm {
+    position: static;
+    margin-bottom: 40px;
+  }
+}
+
+/* Grievance Form */
+.grievanceForm {
+  background: var(--surface);
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+  position: sticky;
+  top: 100px;
+}
+
+.grievanceForm h3 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Grievance List */
+.grievances {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.grievances h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.grievance-details {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: var(--transition);
+  border: 1px solid var(--border);
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grievance-details:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.grievance-details h4 {
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.grievance-details p {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.grievance-details strong {
+  color: var(--text-main);
+  font-weight: 600;
+  margin-right: 8px;
+  min-width: 100px;
+  /* Align labels */
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.status-badge.pending {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+.status-badge.completed,
+.status-badge.resolved {
+  margin: 0;
+}
+
+.grievance-details span.material-symbols-outlined {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  background: #fee2e2;
+  color: #ef4444;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.grievance-details span.material-symbols-outlined:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+/* Category Buttons */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  /* Wrap buttons on smaller screens */
+  gap: 12px;
+  margin-bottom: 40px;
+  padding: 4px;
+  align-items: center;
+}
+
+.category-buttons h3 {
+  margin: 0 16px 0 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.category-buttons button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.category-buttons button:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-light);
+}
+
+.category-buttons button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Popup */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column; /* Stack children vertically */
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
+  background: var(--surface);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1000;
+  border: 1px solid var(--border);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Style for the textarea */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 .popup textarea {
-  width: 100%; /* Cover X-axis */
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
+  min-height: 120px;
+  resize: vertical;
 }
 
-/* Style for the select */
-.popup select {
-  width: 100%; /* Cover X-axis */
-  margin-bottom: 20px; /* Add space below select */
-  padding: 10px;
-  margin-top: 10px; 
-  border: 1px solid #000000;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-/* Style for the button container */
 .popup .button-container {
   display: flex;
-  justify-content: space-between; /* Place buttons side by side */
-  width: 100%; /* Cover X-axis */
-  gap: 10px;
-  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
 }
 
-.popup .button-container button {
-  margin: 5px 0; /* Add vertical spacing between buttons */
-}
-
-/* Style for the close and submit buttons */
 .popup button {
-  flex: 1; /* Make both buttons equally share the space */
-  margin: 0 5px; /* Add space between buttons */
-  background: var(--primary);
-  color: #fff;
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9em;
-  margin-left: 10px;
+  flex: 1;
+  margin-top: 0;
 }
 
-.popup .success-message {
-  color: green;
-  text-align: center;
-  margin-top: 10px;
+.popup button.cancel {
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
 }
 
-.reply-button-container {
-  position: relative;
+.popup button.cancel:hover {
+  background: var(--surface-hover);
+  box-shadow: none;
 }
 
-.reply-button-container button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  flex: 1; /* Make both buttons equally share the space */
-  margin: 0 5px; /* Add space between buttons */
-  background: #ffffff;
-  color: #000000;
-  border: 2px solid #000000;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  margin-left: 10px;
-}
-
-
-/* Media query for screens wider than 768px */
-@media (min-width: 768px) {
-  /* Larger screen styles */
-
-  /* Restore original padding for .popup */
-  .popup {
-    padding: 30px;
-  }
-
-  /* Increase font size for larger screens */
-  .popup button {
-    font-size: 1em;
-  }
-
-  /* Restore original button layout for larger screens */
-  .popup .button-container {
-    flex-direction: row;
-  }
-}
-
-
-
-/* styles.css (or your preferred file) */
-
+/* Loader */
 .loader-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primary); /* Adjust the color and opacity as needed */
+  background: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it appears above other elements */
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+/* Reply Button */
+.reply-button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reply-button-container button {
+  background: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.grievance-details p {
+  margin: 0 0 12px 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.grievance-details strong {
+  color: var(--text-main);
+  font-weight: 600;
+  margin-right: 8px;
+  min-width: 100px;
+  /* Align labels */
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.status-badge.pending {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+.status-badge.completed,
+.status-badge.resolved {
+  margin: 0;
+}
+
+.grievance-details span.material-symbols-outlined {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  background: #fee2e2;
+  color: #ef4444;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.grievance-details span.material-symbols-outlined:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+/* Category Buttons */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  /* Wrap buttons on smaller screens */
+  gap: 12px;
+  margin-bottom: 40px;
+  padding: 4px;
+  align-items: center;
+}
+
+.category-buttons h3 {
+  margin: 0 16px 0 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.category-buttons button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.category-buttons button:hover {
+  background: var(--surface-hover);
+  border-color: var(--text-light);
+}
+
+.category-buttons button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1000;
+  border: 1px solid var(--border);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.popup textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.popup .button-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.popup button {
+  flex: 1;
+  margin-top: 0;
+}
+
+.popup button.cancel {
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.popup button.cancel:hover {
+  background: var(--surface-hover);
+  box-shadow: none;
+}
+
+/* Loader */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+/* Reply Button */
+.reply-button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reply-button-container button {
+  background: var(--surface);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 8px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.reply-button-container button:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Priority Badges */
+.priority-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.priority-badge.low {
+  background-color: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.priority-badge.medium {
+  background-color: #fff7ed;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+.priority-badge.high {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+.grievance-image {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.grievance-image p {
+  margin-bottom: 8px;
 }

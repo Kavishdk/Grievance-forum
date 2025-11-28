@@ -1,0 +1,7 @@
+{
+    "title": "Test Grievance",
+    "description": "This is a test grievance description.",
+    "userType": "Staff",
+    "department": "IT",
+    "category": "Hardware"
+}

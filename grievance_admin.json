@@ -1,0 +1,7 @@
+{
+    "title": "Admin Grievance",
+    "description": "This is an admin grievance.",
+    "userType": "Admin",
+    "department": "AdminDept",
+    "category": "AdminCat"
+}

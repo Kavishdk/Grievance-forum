@@ -11,6 +11,8 @@ const GrievanceForm = () => {
     const [userType, setUserType] = useState('');
     const [department, setDepartment] = useState('');
     const [category, setCategory] = useState('');
+    const [priority, setPriority] = useState('Low');
+    const [image, setImage] = useState(null);
     const [error, setError] = useState(null);
     const [emptyFields, setEmptyFields] = useState([]);
 
@@ -22,13 +24,21 @@ const GrievanceForm = () => {
             return;
         }
 
-        const grievance = { title, description, userType, department, category };
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('userType', userType);
+        formData.append('department', department);
+        formData.append('category', category);
+        formData.append('priority', priority);
+        if (image) {
+            formData.append('image', image);
+        }
 
         const response = await fetch('/api/grievances/', {
             method: 'POST',
-            body: JSON.stringify(grievance),
+            body: formData,
             headers: {
-                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         });
@@ -36,7 +46,7 @@ const GrievanceForm = () => {
         const json = await response.json();
         if (!response.ok) {
             setError(json.error);
-            setEmptyFields(json.emptyFields);
+            setEmptyFields(json.emptyFields || []);
         }
         if (response.ok) {
             setTitle('');
@@ -44,6 +54,8 @@ const GrievanceForm = () => {
             setUserType('');
             setDepartment('');
             setCategory('');
+            setPriority('Low');
+            setImage(null);
             setError(null);
             setEmptyFields([]);
             console.log('New grievance added', json);
@@ -54,7 +66,7 @@ const GrievanceForm = () => {
     return (
         <form className="create" onSubmit={handleSubmit}>
             <h3>Create a New Grievance</h3>
-            <hr/>
+            <hr />
 
             <label>Title:</label>
             <input
@@ -70,41 +82,57 @@ const GrievanceForm = () => {
                 onChange={(e) => setUserType(e.target.value)}
                 value={userType}
                 className={emptyFields.includes('userType') ? 'error' : ''}
-            >   
-                <option value=''>Select</option>             
+            >
+                <option value=''>Select</option>
                 <option value="Anonymous">Anonymous</option>
                 <option value={user.email}>{user.email}</option>
-            </select>    
+            </select>
 
             <label>Department:</label>
             <select
                 onChange={(e) => setDepartment(e.target.value)}
                 value={department}
                 className={emptyFields.includes('department') ? 'error' : ''}
-            >    
-                <option value=''>Select</option>            
+            >
+                <option value=''>Select</option>
                 <option value="Anonymous">Anonymous</option>
                 <option value="Information Science and Engineering">Information Science and Engineering</option>
                 <option value="Computer Science and Engineering">Computer Science and Engineering</option>
                 <option value="Information Technology">Information Technology</option>
                 <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
                 <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</option>
-            </select>  
+            </select>
 
             <label>Category:</label>
             <select
                 onChange={(e) => setCategory(e.target.value)}
                 value={category}
                 className={emptyFields.includes('category') ? 'error' : ''}
-            >    
-                <option value=''>Select</option>            
+            >
+                <option value=''>Select</option>
                 <option value="Academics">Academics</option>
                 <option value="BIP Portal">BIP portal</option>
                 <option value="CoE">CoE</option>
                 <option value="Fees">Fees</option>
                 <option value="Hostel">Hostel</option>
                 <option value="Non-Academics">Non-Academics</option>
-            </select>     
+            </select>
+
+            <label>Priority:</label>
+            <select
+                onChange={(e) => setPriority(e.target.value)}
+                value={priority}
+            >
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label>Attachment (Image):</label>
+            <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+            />
 
             <label>Description:</label>
             <textarea

@@ -11,15 +11,15 @@ const grievanceSchema = new Schema({
         required: true
     },
     userType: {
-        type :String ,
+        type: String,
         required: true
     },
     department: {
-        type :String ,
+        type: String,
         required: true
     },
     category: {
-        type :String ,
+        type: String,
         required: true
     },
     user_id: {
@@ -30,6 +30,15 @@ const grievanceSchema = new Schema({
         type: String, // You can use an enum here for predefined statuses
         required: true,
         default: 'pending' // Default status is 'pending', you can change it to whatever is suitable
+    },
+    priority: {
+        type: String,
+        enum: ['Low', 'Medium', 'High'],
+        default: 'Low'
+    },
+    imageUrl: {
+        type: String,
+        default: ''
     },
     reply: {
         type: String,

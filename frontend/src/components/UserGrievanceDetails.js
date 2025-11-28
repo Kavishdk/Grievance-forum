@@ -36,12 +36,23 @@ const UserGrievanceDetails = ({ grievance }) => {
             <p><strong>User Type:</strong> {grievance.userType}</p>
             <p><strong>Department:</strong> {grievance.department}</p>
             <p><strong>Category:</strong> {grievance.category}</p>
+            <p><strong>Priority:</strong> <span className={`priority-badge ${grievance.priority?.toLowerCase()}`}>{grievance.priority}</span></p>
+            {grievance.imageUrl && (
+                <div className="grievance-image" style={{ margin: '10px 0' }}>
+                    <p><strong>Attachment:</strong></p>
+                    <img
+                        src={`/${grievance.imageUrl.replace(/\\/g, '/')}`}
+                        alt="Grievance Attachment"
+                        style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', border: '1px solid #e2e8f0' }}
+                    />
+                </div>
+            )}
             <p className="posted-time">{formatDistanceToNow(new Date(grievance.createdAt), { addSuffix: true })}</p>
             {user && (
                 <span className="material-symbols-outlined" onClick={handleClick}>Delete</span>
             )}
             <hr />
-            <p><strong>Status:</strong> {grievance.status}</p>
+            <p><strong>Status:</strong> <span className={`status-badge ${grievance.status}`}>{grievance.status}</span></p>
             <p><strong>Response:</strong> {grievance.reply}</p>
         </div>
     );

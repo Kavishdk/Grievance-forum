@@ -13,6 +13,21 @@ const {
 // Require authentication for all grievance routes
 const requireAuth = require('../middleware/requireAuth');
 
+const multer = require('multer');
+const path = require('path');
+
+// Multer config
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname)) // Appending extension
+    }
+});
+
+const upload = multer({ storage: storage });
+
 const router = express.Router();
 
 router.use(requireAuth);
@@ -24,7 +39,7 @@ router.get('/', getGrievances);
 router.get('/:id', getGrievance);
 
 // POST a new Grievance
-router.post('/', createGrievance);
+router.post('/', upload.single('image'), createGrievance);
 
 // DELETE a Grievance
 router.delete('/:id', deleteGrievance);
